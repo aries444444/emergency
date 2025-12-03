@@ -1,0 +1,552 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry} % 页边距1英寸
+\usepackage{amsmath,amssymb,amsthm} % 数学公式包
+\usepackage{ctex} % 中文支持
+\usepackage{fancyhdr} % 页眉页脚
+\usepackage{enumitem} % 列表格式
+\usepackage{setspace} % 行距设置
+
+% 字体设置：中文宋体，英文Times New Roman
+\setCJKmainfont{SimSun} % 中文主体字体
+\setmainfont{Times New Roman} % 英文主体字体
+
+% 行距设置：1.5倍行距
+\linespread{1.5}
+
+% 页眉页脚设置
+\pagestyle{fancy}
+\fancyhf{} % 清空默认页眉页脚
+% 页眉：左-标题，右-章节名
+\lhead{\bfseries Calculus Final Exam Review}
+\rhead{\bfseries \leftmark}
+% 页脚：中-版权信息，右-页码
+\cfoot{\small © The XJTLU Math Club – All rights reserved}
+\rfoot{\small Page \thepage}
+% 页眉页脚线条
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+% 定理/定义格式（保持原文风格）
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}{定义}[section]
+
+\begin{document}
+
+% 仅保留5.3到8.1章节，严格遵循原文内容，不增不减
+\section*{5.3 The First Fundamental Theorem of Calculus}
+\addcontentsline{toc}{section}{5.3 微积分第一基本定理}
+
+\subsection*{Theorem A First Fundamental Theorem of Calculus（微积分第一定理）}
+设 \( f \) 是闭区间 \([a, b]\) 上的连续函数，\( x \) 是 \((a, b)\) 内一点，则
+\[
+\frac{d}{dx} \int_{a}^{x} f(t) dt = f(x)
+\]
+(Let \( f \) be continuous on the closed interval \([a, b]\) and let \( x \) be a (variable) point in \((a, b)\). Then \(\frac{d}{dx} \int_{a}^{x} f(t) dt = f(x)\).)
+
+\subsection*{Theorem B Comparison Property（保不等式性）}
+如果函数 \( f \) 和 \( g \) 在 \([a, b]\) 上可积，且对于所有在 \([a, b]\) 内的 \( x \) 都有 \( f(x) \leq g(x) \)，则
+\[
+\int_{a}^{b} f(x) dx \leq \int_{a}^{b} g(x) dx
+\]
+(If \( f \) and \( g \) are integrable on \([a, b]\) and if \( f(x) \leq g(x) \) for all \( x \) in \([a, b]\), then \(\int_{a}^{b} f(x) dx \leq \int_{a}^{b} g(x) dx\).)
+
+用非正式的描述性语言来说就是定积分具有保持不等关系。(In informal but descriptive language, we say that the definite integral preserves inequalities.)
+
+\subsection*{Theorem C Boundedness Property（有界性）}
+如果 \( f \) 在区间 \([a, b]\) 上可积，而且对于所有在 \([a, b]\) 内的 \( x \)，有 \( m \leq f(x) \leq M \)，那么
+\[
+m(b - a) \leq \int_{a}^{b} f(x) dx \leq M(b - a)
+\]
+(If \( f \) is integrable on \([a, b]\) and \( m \leq f(x) \leq M \) for all \( x \) in \([a, b]\), then \( m(b - a) \leq \int_{a}^{b} f(x) dx \leq M(b - a) \).)
+
+\subsection*{Theorem D Linearity of the Definite Integral（定积分的线性性质）}
+如果 \( f \) 和 \( g \) 在区间 \([a, b]\) 上可积，且 \( k \) 是一个常数，则 \( kf \) 与 \( f + g \) 可积，且有
+\[
+\int_{a}^{b} kf(x) dx = k \int_{a}^{b} f(x) dx
+\]
+\[
+\int_{a}^{b} [f(x) + g(x)] dx = \int_{a}^{b} f(x) dx + \int_{a}^{b} g(x) dx
+\]
+(Suppose that \( f \) and \( g \) are integrable on \([a, b]\) and that \( k \) is a constant. Then \( kf \) and \( f + g \) are integrable and the above equalities hold.)
+
+\subsection*{Position（位移）}
+把 \( F(a) = \int_{0}^{a} v(t) dt \) 定义为物体在时间 \( a \) 时的位移。(Let \( F(a) = \int_{0}^{a} v(t) dt \) denote the position of the object at time \( a \).)
+
+---
+
+\section*{5.4 The Second Fundamental Theorem of Calculus and the Method of Substitution}
+\addcontentsline{toc}{section}{5.4 微积分第二基本定理及换元法}
+
+\subsection*{Theorem A Second Fundamental Theorem of Calculus（微积分第二基本定理）}
+假设 \( f \) 在 \([a, b]\) 上连续（因此可积），并假设 \( F \) 为 \( f \) 在 \([a, b]\) 上的任一原函数，则
+\[
+\int_{a}^{b} f(x) dx = F(b) - F(a)
+\]
+(方便记法：\(\int_{a}^{b} f(x) dx = \left[ \int f(x) dx \right]_{a}^{b}\))
+(Let \( f \) be continuous (hence integrable) on \([a, b]\), and let \( F \) be any antiderivative of \( f \) on \([a, b]\). Then \(\int_{a}^{b} f(x) dx = F(b) - F(a)\) (convenient writing: \(\int_{a}^{b} f(x) dx = \left[ \int f(x) dx \right]_{a}^{b}\)).)
+
+\subsection*{Theorem B Substitution Rule for Indefinite Integrals（不定积分的换元积分法）}
+令 \( g \) 为一个可导函数且函数 \( f \) 为函数 \( F \) 的导数，则
+\[
+\int f(g(x)) g'(x) dx = F(g(x)) + C
+\]
+(Let \( g \) be a differentiable function and suppose that \( F \) is an antiderivative of \( f \). Then \(\int f(g(x)) g'(x) dx = F(g(x)) + C\).)
+
+\subsection*{Theorem C Substitution Rule for Definite Integrals（定积分的换元法则）}
+设函数 \( g \) 在区间 \([a, b]\) 上有一个连续的导数，且 \( f \) 在 \( g \) 的值域上连续，则有
+\[
+\int_{a}^{b} f(g(x)) g'(x) dx = \int_{g(a)}^{g(b)} f(u) du
+\]
+其中 \( u = g(x) \)。
+(Let \( g \) have a continuous derivative on \([a, b]\), and let \( f \) be continuous on the range of \( g \). Then \(\int_{a}^{b} f(g(x)) g'(x) dx = \int_{g(a)}^{g(b)} f(u) du\) where \( u = g(x) \).)
+
+\subsection*{Accumulated Rate of change（累积的变化率）}
+see p309 example16（见书本P309例16）
+
+---
+
+\section*{5.5 The Mean Value Theorem for Integrals and the Use of Symmetry}
+\addcontentsline{toc}{section}{5.5 积分中值定理和对称性的应用}
+
+\subsection*{Definition Average Value of a Function（函数的平均值）}
+如果函数 \( f \) 在区间 \([a, b]\) 上可积，则其在 \([a, b]\) 上的平均值为
+\[
+f_{\text{avg}} = \frac{1}{b - a} \int_{a}^{b} f(x) dx
+\]
+(If \( f \) is integrable on the interval \([a, b]\), then the average value of \( f \) on \([a, b]\) is \( f_{\text{avg}} = \frac{1}{b - a} \int_{a}^{b} f(x) dx \).)
+
+\subsection*{Theorem A Mean Value Theorem for Integrals（积分中值定理）}
+如果函数 \( f \) 在区间 \([a, b]\) 上连续，在 \( a \) 和 \( b \) 之间必存在点 \( c \) 满足
+\[
+f(c) = \frac{1}{b - a} \int_{a}^{b} f(x) dx
+\]
+或等价地，\(\int_{a}^{b} f(x) dx = f(c)(b - a)\)
+(If \( f \) is continuous on \([a, b]\), then there is a number \( c \) between \( a \) and \( b \) such that \( f(c) = \frac{1}{b - a} \int_{a}^{b} f(x) dx \) or equivalently, \(\int_{a}^{b} f(x) dx = f(c)(b - a)\).)
+
+\subsection*{Theorem B Symmetry Theorem（对称性定理）}
+如果 \( f \) 是个偶函数，则
+\[
+\int_{-a}^{a} f(x) dx = 2 \int_{0}^{a} f(x) dx
+\]
+如果 \( f \) 是个奇函数，则
+\[
+\int_{-a}^{a} f(x) dx = 0
+\]
+(If \( f \) is an even function, then \(\int_{-a}^{a} f(x) dx = 2 \int_{0}^{a} f(x) dx\); If \( f \) is an odd function, then \(\int_{-a}^{a} f(x) dx = 0\).)
+
+\subsection*{Theorem C}
+如果 \( f \) 是以 \( p \) 为周期的函数，则
+\[
+\int_{a}^{a + p} f(x) dx = \int_{0}^{p} f(x) dx
+\]
+对任意实数 \( a \) 成立。
+(If \( f \) is periodic with period \( p \), then \(\int_{a}^{a + p} f(x) dx = \int_{0}^{p} f(x) dx\) for any real number \( a \).)
+
+---
+
+\section*{6.1 The Area of a Plane Region}
+\addcontentsline{toc}{section}{6.1 平面区域的面积}
+
+\subsection*{A Region above or below the x-axis（在x轴以上或以下的区域）}
+猜想由 \( y = f(x) \)，\( x = a \)，\( x = b \)，和 \( y = 0 \) 围成的区域 \( R \)，它的面积 \( A(R) \) 为
+\[
+A(R) = \int_{a}^{b} |f(x)| dx
+\]
+如果是 \( x \) 轴下方的区域，则是对应的 \( x \) 轴上方区域面积的相反数。
+(Supposed that the region \( R \) bounded by the graphs of \( y = f(x) \), \( x = a \), \( x = b \), and \( y = 0 \). Its area \( A(R) \) is given by \( A(R) = \int_{a}^{b} |f(x)| dx \). If the region is below the x-axis, it is just the negative of the area of the region above x-axis.)
+
+\subsection*{A Region Between Two Curves（两条曲线之间的区域）}
+\paragraph{method（方法）}
+slice, approximate, integrate（分割､近似､积分）（它分为五个详细步骤）
+\begin{enumerate}[label=Step \arabic*:]
+    \item Sketch the region.（作出区域图形）
+    \item Slice it into thin pieces (strips); label a typical piece.（将这个区域切割成一个个小的片状或带状部分，然后标记其中一个特定部分）
+    \item Approximate the area of this typical piece as if it were a rectangle.（将这个标记的部分近似看成为一个长方形）
+    \item Add up the approximations to the areas of the pieces.（将区域中所有近似部分累加）
+    \item Take the limit as the width of the pieces approaches zero, thus getting a definite integral.（对累计的结果取极限，让每一小部分的宽度趋近于0，从而得到了一个定积分表达式）
+\end{enumerate}
+
+\paragraph{solution（解法）}
+设 \( a \)、\( b \) 是曲线的交点，若 \( f(x) \geq g(x) \) 在 \([a, b]\) 上恒成立，则面积
+\[
+A = \int_{a}^{b} [f(x) - g(x)] dx
+\]
+(a、b are the intersection point of the curve; If \( f(x) \geq g(x) \) for all \( x \in [a, b] \), then the area \( A = \int_{a}^{b} [f(x) - g(x)] dx \).)
+
+\subsection*{distance and displacement（距离和位移）}
+- Displacement(位移量)：\(\int_{t_1}^{t_2} v(t) dt\)
+- The total distance(总距离)：\(\int_{t_1}^{t_2} |v(t)| dt\)
+
+---
+
+\section*{6.2 Volumes of Solids: Slabs, Disks, Washers}
+\addcontentsline{toc}{section}{6.2 立体的体积:薄片模型、圆盘模型、圆环模型}
+
+\subsection*{Solids of Revolution: Method of Disks（旋转立体的体积:圆盘法）}
+\paragraph{concept（概念）}
+当一个平面区域绕着这个平面内的一条固定的直线旋转时，产生了一个旋转立体，这条固定的直线叫作这个旋转立体的轴线。可以用定积分表示这些旋转体的体积。
+(When a plane region, lying entirely on one side of a fixed line in its plane, is revolved about that line, it generates a solid of revolution. The fixed line is called the axis of the solid of revolution. It is possible to represent the volume as a definite integral.)
+
+\paragraph{solution（解）}
+look at p343 example1､2（见书本P343例1、例2）
+- 若区域由 \( y = f(x) \)、\( x = a \)、\( x = b \)、\( y = 0 \) 围成，绕x轴旋转，体积 \( V \) 为
+\[
+V = \pi \int_{a}^{b} [f(x)]^2 dx
+\]
+
+\subsection*{Method of Washers（圆环法）}
+\paragraph{concept（概念）}
+切割一个旋转体得到中间有洞的圆盘。
+(slicing a solid of revolution results in disks with holes in the middle.)
+
+\paragraph{solution（解）}
+look at p344 example3､4（见书本P344例3、例4）
+- 若区域由 \( y = f(x) \)、\( y = g(x) \)、\( x = a \)、\( x = b \)（\( f(x) \geq g(x) \geq 0 \)）围成，绕x轴旋转，体积 \( V \) 为
+\[
+V = \pi \int_{a}^{b} \left( [f(x)]^2 - [g(x)]^2 \right) dx
+\]
+
+---
+
+\section*{6.3 Volumes of Solids of Revolution: Shells}
+\addcontentsline{toc}{section}{6.3 旋转体的体积:薄壳法}
+
+\subsection*{the method of cylindrical shells（柱形壳法）}
+\paragraph{concept（概念）}
+一个柱形壳是两个同心的圆柱体所围成的，如果内径 \( r_1 \)，外径 \( r_2 \)，高是 \( h \)，则体积为
+\[
+V = 2\pi \cdot (\text{average radius}) \cdot (\text{height}) \cdot (\text{thickness}) = 2\pi rh\Delta r
+\]
+其中表达式 \( (r_1 + r_2)/2 \) 用 \( r \) 表示，是 \( r_1 \) 和 \( r_2 \) 的平均值（平均半径）。
+(A cylindrical shell is a solid bounded by two concentric right circular cylinders. If the inner radius is \( r_1 \), the outer radius is \( r_2 \), and the height is \( h \), then its volume is given by \( V = 2\pi \cdot (\text{average radius}) \cdot (\text{height}) \cdot (\text{thickness}) = 2\pi rh\Delta r \), where \( r = (r_1 + r_2)/2 \) is the average radius.)
+
+\paragraph{shell method（薄壳法）}
+look at p349-350 example1､2（见书本P349-350例1、例2）
+- 若区域由 \( y = f(x) \)、\( x = a \)、\( x = b \)、\( y = 0 \)（\( f(x) \geq 0 \)）围成，绕y轴旋转，体积 \( V \) 为
+\[
+V = 2\pi \int_{a}^{b} x f(x) dx
+\]
+
+---
+
+\section*{6.4 Length of a Plane Curve}
+\addcontentsline{toc}{section}{6.4 平面曲线的弧长}
+
+\subsection*{definition（定义）}
+设一平面曲线的参数方程为 \( x = f(t) \)，\( y = g(t) \)，\( a \leq t \leq b \)，\( f' \) 和 \( g' \) 存在且在定义域 \([a, b]\) 上连续，\( f'(t) \) 和 \( g'(t) \) 在 \([a, b]\) 上不同时为0，则称该曲线是光滑的。
+(A plane curve is smooth if it is determined by a pair of parametric equations \( x = f(t) \), \( y = g(t) \), \( a \leq t \leq b \), where \( f' \) and \( g' \) exist and are continuous on \([a, b]\), and \( f'(t) \) and \( g'(t) \) are not simultaneously zero on \([a, b]\).)
+
+\subsection*{The arc length \( L \)（曲线的长度 \( L \)）}
+- 对于函数 \( y = f(x) \)（\( a \leq x \leq b \)），弧长为
+\[
+L = \int_{a}^{b} \sqrt{1 + [f'(x)]^2} dx
+\]
+- 对于参数方程 \( x = f(t) \)，\( y = g(t) \)（\( a \leq t \leq b \)），弧长为
+\[
+L = \int_{a}^{b} \sqrt{[f'(t)]^2 + [g'(t)]^2} dt
+\]
+
+\subsection*{Differential of Arc Length（曲线弧的微分）}
+\[
+ds = \sqrt{1 + \left( \frac{dy}{dx} \right)^2} dx \quad \text{或} \quad ds = \sqrt{\left( \frac{dx}{dt} \right)^2 + \left( \frac{dy}{dt} \right)^2} dt
+\]
+
+\subsection*{Area of a Surface of Revolution（旋转体的表面积）}
+如果所给曲线的参数方程形式为 \( x = f(t) \)，\( y = g(t) \)，\( a \leq t \leq b \)，那么表面积公式就可以表示为
+\[
+S = 2\pi \int_{a}^{b} g(t) \sqrt{[f'(t)]^2 + [g'(t)]^2} dt \quad (\text{绕x轴旋转})
+\]
+或
+\[
+S = 2\pi \int_{a}^{b} f(t) \sqrt{[f'(t)]^2 + [g'(t)]^2} dt \quad (\text{绕y轴旋转})
+\]
+(If the curve is given parametrically by \( x = f(t) \), \( y = g(t) \), \( a \leq t \leq b \), then the surface area formula becomes the above expressions for revolution about x-axis or y-axis.)
+
+---
+
+\section*{6.7 Probability and Random Variables}
+\addcontentsline{toc}{section}{6.7 概率和随机变量}
+
+如果 \( A \) 是一事件，那么有一组结果的可能性，我们记 \( A \) 的可能性为 \( P(A) \)。可能性具有下列性质：
+1. 对于任意 \( A \)，\( 0 \leq P(A) \leq 1 \)
+2. 若 \( S \) 是所有结果可能的集合，那它就叫样本空间，\( P(S) = 1 \)
+3. 若事件 \( A \) 和 \( B \) 是互不相容事件，就是说，两者之间没有共同点，那么 \( P(A \cup B) = P(A) + P(B) \)（事实上，需要更严格的条件，但现在足够了）
+
+(If \( A \) is an event, that is, a set of possible outcomes, then we denote the probability of \( A \) by \( P(A) \). Probabilities must satisfy the following properties: 1. \( 0 \leq P(A) \leq 1 \) for every event \( A \); 2. If \( S \) is the set of all possible outcomes, called the sample space, then \( P(S) = 1 \); 3. If events \( A \) and \( B \) are disjoint, that is, they have no outcomes in common, then \( P(A \cup B) = P(A) + P(B) \). (Actually, a stronger condition is required, but for now this will do.))
+
+\subsection*{Definition Expectation of a Random Variable（随机变量的期望）}
+如果 \( X \) 是一个随机变量，有着如下概率分布：
+
+\begin{center}
+\begin{tabular}{c|cccc}
+\hline
+$ X $ & $ x_1 $ & $ x_2 $ & $ \cdots $ & $ x_n $ \\
+\hline
+$ P(X = x_i) $ & $ p_1 $ & $ p_2 $ & $ \cdots $ & $ p_n $ \\
+\hline
+\end{tabular}
+\end{center}
+
+则 \( X \) 的期望，记作 \( E(X) \)，也称为 \( X \) 的均值且被记为 \( \mu \)，是
+\[
+E(X) = x_1 p_1 + x_2 p_2 + \cdots + x_n p_n
+\]
+(If \( X \) is a random variable with probability distribution as above, then the expectation of \( X \), denoted \( E(X) \), also called the mean of \( X \) and denoted \( \mu \), is \( E(X) = x_1 p_1 + x_2 p_2 + \cdots + x_n p_n \).)
+
+\subsection*{the probability density function (PDF)（概率密度函数）}
+对于一个连续随机变量 \( X \)，我们必须详细说明概率密度函数(PDF)。概率密度函数是指随机变量 \( X \) 在区间 \([A, B]\) 上的一个函数，它满足：
+1. \( f(x) \geq 0 \) 对所有 \( x \in [A, B] \) 成立
+2. \( \int_{A}^{B} f(x) dx = 1 \)
+3. 对所有 \( a, b \in [A, B] \)（\( a \leq b \)），有 \( P(a \leq X \leq b) = \int_{a}^{b} f(x) dx \)
+
+(For a continuous random variable \( X \), we must specify the probability density function (PDF). A PDF for a random variable \( X \) that takes on values in the interval \([A, B]\) is a function satisfying: 1. \( f(x) \geq 0 \) for all \( x \) in \([A, B]\); 2. \( \int_{A}^{B} f(x) dx = 1 \); 3. \( P(a \leq X \leq b) = \int_{a}^{b} f(x) dx \) for all \( a, b \) ($ a \leq b $) in the interval \([A, B]\).)
+
+\subsection*{The cumulative distribution function (CDF)（累计分布函数）}
+关于随机变量 \( X \) 的累积分布函数，定义如下：
+\[
+F(x) = P(X \leq x)
+\]
+这个函数是同时为离散和连续随机变量定义的。
+(The cumulative distribution function (CDF), which, for a random variable \( X \), is the function \( F \) defined by \( F(x) = P(X \leq x) \). This function is defined for both discrete and continuous random variables.)
+
+\subsection*{Theorem A}
+令 \( X \) 是在区间 \([A, B]\) 上取值的连续随机变量，它的概率密度函数是 \( f(x) \)，累积分布函数是 \( F(x) \)，则
+\[
+F'(x) = f(x) \quad \text{对所有} \quad x \in (A, B)
+\]
+(Let \( X \) be a continuous random variable taking on values in the interval \([A, B]\) and having PDF \( f(x) \) and CDF \( F(x) \). Then \( F'(x) = f(x) \) for all \( x \) in \((A, B)\).)
+
+---
+
+\section*{7.1 Basic Integration Rules}
+\addcontentsline{toc}{section}{7.1 基本积分规则}
+
+\subsection*{Standard Integral Forms（标准积分形式）}
+- Constants（常函数）：\(\int k dx = kx + C\)
+- Powers（幂函数）：\(\int x^n dx = \frac{x^{n+1}}{n+1} + C\)（\( n \neq -1 \)）
+- Trigonometric Functions（三角函数）：
+  \[
+  \int \sin x dx = -\cos x + C, \quad \int \cos x dx = \sin x + C, \quad \int \sec^2 x dx = \tan x + C
+  \]
+  \[
+  \int \csc^2 x dx = -\cot x + C, \quad \int \sec x \tan x dx = \sec x + C, \quad \int \csc x \cot x dx = -\csc x + C
+  \]
+- Algebraic Functions（代数函数）：\(\int \frac{1}{x} dx = \ln|x| + C\)
+
+\subsection*{Theorem A Substitution in Indefinite Integrals（不定积分的换元积分法）}
+令 \( g \) 为一个可导函数且函数 \( f \) 为函数 \( F \) 的导数，若 \( u = g(x) \)，则
+\[
+\int f(g(x)) g'(x) dx = F(g(x)) + C
+\]
+(Let \( g \) be a differentiable function and suppose that \( F \) is an antiderivative of \( f \). Then, if \( u = g(x) \), \(\int f(g(x)) g'(x) dx = F(g(x)) + C\).)
+
+\subsection*{Substitution in definite Integrals（定积分的换元积分法）}
+look at 5.4 theorem C（见5.4定理C）
+
+---
+
+\section*{7.2 Integration by Parts}
+\addcontentsline{toc}{section}{7.2 分部积分法}
+
+\subsection*{Integration by Parts: Indefinite Integrals（不定积分的分部积分法）}
+\[
+\int u dv = uv - \int v du
+\]
+其中 \( u \) 和 \( v \) 是关于 \( x \) 的可导函数。
+(where \( u \) and \( v \) are differentiable functions of \( x \).)
+
+\subsection*{Integration by Parts: Definite Integrals（定积分的分部积分法）}
+\[
+\int_{a}^{b} u dv = \left. uv \right|_{a}^{b} - \int_{a}^{b} v du
+\]
+
+\subsection*{Reduction Formulas（递推公式）}
+形如 \( \int f^n(x) dx = F(x, f^k(x)) + C \)（其中 \( k < n \)）的式子，称作递推公式（\( f \) 的指数被降低）。
+(A formula of the form \( \int f^n(x) dx = F(x, f^k(x)) + C \) where \( k < n \), is called a reduction formula (the exponent on \( f \) is reduced).)
+
+PS: look at page393 example7､8（见书本P393例7、例8）
+
+---
+
+\section*{7.3 Some Trigonometric Integrals}
+\addcontentsline{toc}{section}{7.3 三角函数的积分}
+
+\subsection*{five commonly encountered types（五种最常见的类型）}
+1. \( \int \sin^n x dx \) 和 \( \int \cos^n x dx \)
+2. \( \int \sin^m x \cos^n x dx \)
+3. \( \int \sin mx \cos nx dx \)，\( \int \sin mx \sin nx dx \)，\( \int \cos mx \cos nx dx \)
+4. \( \int \tan^n x dx \)，\( \int \cot^n x dx \)
+5. \( \int \tan^n x \sec^m x dx \)，\( \int \cot^n x \csc^m x dx \)
+
+\subsection*{type1: \( \int \sin^n x dx \) 和 \( \int \cos^n x dx \)}
+- 当 \( n \) 为正奇数时，在提出一个 \( \sin x \) 或 \( \cos x \) 后，利用 \( \sin^2 x + \cos^2 x = 1 \) 这个性质求解。
+- 当 \( n \) 是偶数时，利用半角公式：
+  \[
+  \sin^2 x = \frac{1 - \cos 2x}{2}, \quad \cos^2 x = \frac{1 + \cos 2x}{2}
+  \]
+(Consider first the case where \( n \) is an odd positive integer. After taking out either the factor \( \sin x \) or \( \cos x \), use the identity \( \sin^2 x + \cos^2 x = 1 \). Make use of half-angle identities where \( n \) is even.)
+
+\subsection*{type2: \( \int \sin^m x \cos^n x dx \)}
+如果 \( m \) 和 \( n \) 中有一个是正奇数，而另一个是任意数，可以提出一个 \( \sin x \) 或 \( \cos x \)，接着利用 \( \sin^2 x + \cos^2 x = 1 \) 这个性质求解。
+(If either \( m \) or \( n \) is an odd positive integer and the other exponent is any number, we factor out \( \sin x \) or \( \cos x \) and use the identity \( \sin^2 x + \cos^2 x = 1 \).)
+
+\subsection*{type3: 积化和差积分}
+运用积化和差公式：
+\[
+\sin A \cos B = \frac{1}{2}[\sin(A+B) + \sin(A-B)]
+\]
+\[
+\sin A \sin B = \frac{1}{2}[\cos(A-B) - \cos(A+B)]
+\]
+\[
+\cos A \cos B = \frac{1}{2}[\cos(A+B) + \cos(A-B)]
+\]
+(use the product identities: the above equalities.)
+
+\subsection*{type4: \( \int \tan^n x dx \) 和 \( \int \cot^n x dx \)}
+对于 \( n \geq 2 \)，被积函数是正切情况下，利用公式 \( \tan^2 x = \sec^2 x - 1 \)；被积函数是余切情况下，利用公式 \( \cot^2 x = \csc^2 x - 1 \)。
+(For \( n \geq 2 \), in the tangent case, factor out \( \tan^2 x = \sec^2 x - 1 \); in the cotangent case, factor out \( \cot^2 x = \csc^2 x - 1 \).)
+
+\subsection*{type5: \( \int \tan^n x \sec^m x dx \) 和 \( \int \cot^n x \csc^m x dx \)}
+- \( n \) 为偶数，\( m \) 为任意数，转化 \( \sec x \)（利用 \( \sec^2 x = 1 + \tan^2 x \)）
+- \( m \) 为奇数，\( n \) 为任意数，转化 \( \tan x \)（提出 \( \sec x \tan x \)）
+(n even, m Any number, transform \( \sec x \) (use \( \sec^2 x = 1 + \tan^2 x \)); m odd, n Any number, transform \( \tan x \) (factor out \( \sec x \tan x \)).)
+
+---
+
+\section*{7.4 Rationalizing Substitutions}
+\addcontentsline{toc}{section}{7.4 第二类换元积分法}
+
+\subsection*{Integrands Involving \( \sqrt[n]{ax + b} \)（被积函数涉及 \( \sqrt[n]{ax + b} \)）}
+如果 \( \sqrt[n]{ax + b} \) 出现在被积函数中，用 \( u = \sqrt[n]{ax + b} \) 换元可以解决问题。
+(If \( \sqrt[n]{ax + b} \) appears in an integral, the substitution \( u = \sqrt[n]{ax + b} \) will eliminate the radical.)
+
+\subsection*{Integrands Involving \( \sqrt{a^2 - x^2} \)、\( \sqrt{a^2 + x^2} \) 和 \( \sqrt{x^2 - a^2} \)（被积函数涉及以上三类的积分）}
+为了有理化这些表达式，我们可以假设 \( a \) 是正数并作如下三角变换：
+
+\begin{center}
+\begin{tabular}{c|c|c}
+\hline
+Radical（根式） & Substitution（换元） & Restriction on \( t \)（限制\( t \)的取值范围） \\
+\hline
+\( \sqrt{a^2 - x^2} \) & \( x = a \sin t \) & \( -\frac{\pi}{2} \leq t \leq \frac{\pi}{2} \) \\
+\( \sqrt{a^2 + x^2} \) & \( x = a \tan t \) & \( -\frac{\pi}{2} < t < \frac{\pi}{2} \) \\
+\( \sqrt{x^2 - a^2} \) & \( x = a \sec t \) & \( 0 \leq t < \frac{\pi}{2} \) 或 \( \pi \leq t < \frac{3\pi}{2} \) \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Completing the Square（完全平方法）}
+当一个形如 \( x^2 + Bx + C \) 的二次式出现在根号下时，可以把它拼凑成完全平方式，以开始三角换元。
+(When a quadratic expression of the type \( x^2 + Bx + C \) appears under a radical, completing the square will prepare it for a trigonometric substitution.)
+
+---
+
+\section*{7.5 Integration of Rational Functions Using Partial Fractions}
+\addcontentsline{toc}{section}{7.5 用部分分式法求有理函数的积分}
+
+\subsection*{different types of functions using partial fractions（用部分分式法的不同类型的式子）}
+- distinct linear factors（不同线性因式）
+- repeated linear factors（线性重因式）
+- Some Distinct, Some Repeated Linear Factors（部分线性单因式，部分线性重因式）
+- single quadratic factor（二次单因式）
+- repeated quadratic factor（二次重因式）
+
+(关注7.5 例题1-8)（see examples 1-8 in section 7.5）
+
+\subsection*{Summary of partial fractions（关于部分分式的总结）}
+分解一个有理函数 \( f(x) = \frac{p(x)}{q(x)} \) 成部分分式的过程如下：
+\begin{enumerate}[label=Step \arabic*:]
+    \item 如果 \( f(x) \) 为假分式，即如果 \( p(x) \) 的次方至少等于 \( q(x) \)，用 \( p(x) \) 除以 \( q(x) \) 得 \( f(x) = s(x) + \frac{r(x)}{q(x)} \)，其中 \( s(x) \) 是多项式且 \( \deg(r) < \deg(q) \)。
+    (If \( f(x) \) is improper, that is, if \( p(x) \) is of degree at least that of \( q(x) \), divide \( p(x) \) by \( q(x) \), obtaining \( f(x) = s(x) + \frac{r(x)}{q(x)} \), where \( s(x) \) is a polynomial and \( \deg(r) < \deg(q) \).)
+    \item 将 \( q(x) \) 分解成实系数的线性和不可约的二次因式：由代数定理可知，（理论上）这是绝对可能的。
+    (Factor \( q(x) \) into a product of linear and irreducible quadratic factors with real coefficients. By a theorem of algebra, this is always (theoretically) possible.)
+    \item 对于每个 \( (ax + b)^k \) 形式的因式，可以期待分解成：
+      \[
+      \frac{A_1}{ax + b} + \frac{A_2}{(ax + b)^2} + \cdots + \frac{A_k}{(ax + b)^k}
+      \]
+      其中 \( A_1, A_2, \cdots, A_k \) 是常数。
+      (For each factor of the form \( (ax + b)^k \), expect the decomposition to have the terms above where \( A_1, A_2, \cdots, A_k \) are constants.)
+    \item 对于每个 \( (ax^2 + bx + c)^m \) 形式的因式，可以期待分解成：
+      \[
+      \frac{B_1x + C_1}{ax^2 + bx + c} + \frac{B_2x + C_2}{(ax^2 + bx + c)^2} + \cdots + \frac{B_mx + C_m}{(ax^2 + bx + c)^m}
+      \]
+      其中 \( B_1, C_1, \cdots, B_m, C_m \) 是常数。
+      (For each factor of the form \( (ax^2 + bx + c)^m \), expect the decomposition to have the terms above where \( B_1, C_1, \cdots, B_m, C_m \) are constants.)
+    \item 令 \( \frac{r(x)}{q(x)} \) 等于第三步和第四步中所有部分的和。常数的数目要等于分母 \( q(x) \) 的次数。
+    (Set \( \frac{r(x)}{q(x)} \) equal to the sum of all the terms found in Steps 3 and 4. The number of constants to be determined should equal the degree of the denominator \( q(x) \).)
+    \item 将第五步建立的等式的两边都乘以 \( q(x) \) 并求出未知常数。这可以用两种方法算出：
+      (1) 令相同指数部分的系数相等；或 (2) 令 \( x \) 等于简单的值。
+      (Multiply both sides of the equation found in Step 5 by \( q(x) \) and solve for the unknown constants. This can be done by either of two methods: (1) Equate coefficients of like-degree terms; or (2) assign convenient values to the variable \( x \).)
+\end{enumerate}
+
+\subsection*{the logistic differential equation（罗辑斯蒂微分方程）}
+\[
+y' = ky(L - y)
+\]
+(关注p411 例题9)（see example 9 on page 411）
+
+---
+
+\section*{7.7 First-Order Linear Differential Equations}
+\addcontentsline{toc}{section}{7.7 一阶线性微分方程}
+
+\subsection*{a first-order linear differential equation（一个一阶线性微分方程）}
+\[
+\frac{dy}{dx} + P(x)y = Q(x)
+\]
+其中 \( P(x) \) 和 \( Q(x) \) 仅仅是 \( x \) 的函数。
+(where \( P(x) \) and \( Q(x) \) are functions of \( x \) only.)
+
+\subsection*{Solving First-Order Linear Equations（解决一阶线性方程）}
+为了求解一阶线性微分方程，我们首先将两边都乘以积分因子
+\[
+\mu(x) = e^{\int P(x) dx}
+\]
+（采取这一步骤的原因很快就会变得清楚。）微分方程变为
+\[
+e^{\int P(x) dx} \frac{dy}{dx} + P(x) e^{\int P(x) dx} y = Q(x) e^{\int P(x) dx}
+\]
+左边是乘积 \( y \cdot e^{\int P(x) dx} \) 的导数，所以这个方程的形式是
+\[
+\frac{d}{dx} \left( y e^{\int P(x) dx} \right) = Q(x) e^{\int P(x) dx}
+\]
+双方整合后
+\[
+y e^{\int P(x) dx} = \int Q(x) e^{\int P(x) dx} dx + C
+\]
+通解是
+\[
+y = e^{-\int P(x) dx} \left( \int Q(x) e^{\int P(x) dx} dx + C \right)
+\]
+
+没有必要记住最后结果，求解过程容易推导。
+(It is not worth memorizing this final result; the process of getting there is easily recalled and that is what we illustrate.)
+
+(ps: 关注423 例题1､2 辅助理解)（see examples 1 and 2 on page 423 for better understanding）
+
+---
+
+\section*{8.1 Improper Integrals: Infinite Limits of Integration}
+\addcontentsline{toc}{section}{8.1 反常积分:无穷区间上的反常积分}
+
+\subsection*{Definition（定义）}
+- 对于 \( \int_{a}^{\infty} f(x) dx \)：
+  \[
+  \int_{a}^{\infty} f(x) dx = \lim_{b \to \infty} \int_{a}^{b} f(x) dx
+  \]
+- 对于 \( \int_{-\infty}^{b} f(x) dx \)：
+  \[
+  \int_{-\infty}^{b} f(x) dx = \lim_{a \to -\infty} \int_{a}^{b} f(x) dx
+  \]
+- 对于 \( \int_{-\infty}^{\infty} f(x) dx \)：
+  \[
+  \int_{-\infty}^{\infty} f(x) dx = \int_{-\infty}^{c} f(x) dx + \int_{c}^{\infty} f(x) dx
+  \]
+  其中 \( c \) 为某个常数。
+
+如果等式右边的极限存在而且是一个有限的数，那么我们就说对应的反常积分收敛且收敛于这个数；否则，我们就说这些反常积分发散。
+(If the limits on the right exist and have finite values, then we say that the corresponding improper integrals converge and have those values. Otherwise, the integrals are said to diverge.)
+
+\end{document}
